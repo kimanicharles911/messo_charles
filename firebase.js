@@ -1,11 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
-import dotenv from 'dotenv';
-dotenv.config();
+import { FIREBASE_API_KEY } from '@env';
 
 const firebaseApp = initializeApp({
-  apiKey: `${process.env.FIREBASE_API_KEY}`,
+  apiKey: `${FIREBASE_API_KEY}`,
   authDomain: 'messo-3d26b.firebaseapp.com',
   projectId: 'messo-3d26b',
   storageBucket: 'messo-3d26b.appspot.com',
@@ -16,9 +15,4 @@ const firebaseApp = initializeApp({
 const db = initializeFirestore(firebaseApp, { experimentalForceLongPolling: true });
 const auth = getAuth(firebaseApp);
 
-export { db, auth }
-
-/* const db = firebaseApp.firestore();
-db.settings({ timestampsInSnapshots: true });
-const auth = firebaseApp.auth();
-*/
+export { db, auth };
